@@ -3,6 +3,7 @@ package com.amaris.amaris.controllers;
 import com.amaris.amaris.models.UserModel;
 import com.amaris.amaris.services.IUserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,12 +19,15 @@ public class UserController {
         this.userService = userService;
     }
 
+    @CrossOrigin(origins = "*")
+
     @GetMapping("users")
     @ResponseBody
     public List<UserModel> getUsers() {
         return this.userService.getUsersFromUrl();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("user/{id}")
     @ResponseBody
     public UserModel getUsers(@PathVariable("id") int id) {
